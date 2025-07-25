@@ -1,1 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Dream SHEIN Gift Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Live Activity Panel */
+        .live-activity {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 280px;
+            z-index: 1000;
+        }
+
+        .live-activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .live-indicator {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .activity-count {
+            background: #ef4444;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .activity-count.yellow {
+            background: #f59e0b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #be185d, #ec4899, #f472b6);
+            color: white;
+            padding: 80px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .limited-offer {
+            background: #f59e0b;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero .shein-text {
+            color: #f59e0b;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: #f59e0b;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Recent Activity */
+        .recent-activity {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: #ec4899;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .activity-info {
+            color: #333;
+        }
+
+        .activity-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .activity-info p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .location-tag {
+            background: #ec4899;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            padding: 40px 20px;
+            border-radius: 12px;
+            border: 1px solid #f3f4f6;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: white;
+        }
+
+        .feature-icon.pink {
+            background: #ec4899;
+        }
+
+        .feature-icon.yellow {
+            background: #f59e0b;
+        }
+
+        .feature-icon.black {
+            background: #1f2937;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1f2937;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* How to Get Section */
+        .how-to-get {
+            padding: 80px 20px;
+            background: #f9fafb;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .step-number.pink {
+            background: #ec4899;
+        }
+
+        .step-number.yellow {
+            background: #f59e0b;
+        }
+
+        .step-number.black {
+            background: #1f2937;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1f2937;
+        }
+
+        .step-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #be185d, #ec4899);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .user-count {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .user-avatars {
+            display: flex;
+            gap: -8px;
+        }
+
+        .user-avatars .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f59e0b;
+            border: 2px solid white;
+            margin-left: -8px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #f3f4f6;
+            background: white;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: #6b7280;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        /* User Activity at bottom */
+        .bottom-activity {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .live-activity {
+                width: 250px;
+                right: 10px;
+                top: 10px;
+            }
+            
+            .recent-activity,
+            .bottom-activity {
+                left: 10px;
+                right: 10px;
+                position: relative;
+                margin: 20px 0;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Live Activity Panel -->
+    <div class="live-activity">
+        <div class="live-activity-header">
+            <div class="live-indicator"></div>
+            <span style="font-weight: 600;">Live Activity</span>
+        </div>
+        <div class="activity-item">
+            <span>👥 Online Now</span>
+            <span class="activity-count" id="online-count">855</span>
+        </div>
+        <div class="activity-item">
+            <span>⚡ Claimed Today</span>
+            <span class="activity-count yellow" id="claimed-count">1,318</span>
+        </div>
+        <div class="activity-item">
+            <span>🎁 Total Redeemed</span>
+            <span style="font-weight: 600;" id="total-redeemed">89,851</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="limited-offer">⚡ Limited Time Offer</div>
+            <h1>Get Your Dream<br><span class="shein-text">SHEIN Gift Card</span></h1>
+            <p>Unlock endless fashion possibilities with exclusive SHEIN gift cards.<br>Complete simple tasks and earn your rewards today!</p>
+            <button class="cta-button" onclick="claimGiftCard()">
+                🎁 Claim Your Gift Card Now
+            </button>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span>⏱️</span>
+                    <span>Takes 2-5 minutes</span>
+                </div>
+                <div class="stat-item">
+                    <span>👥</span>
+                    <span>10,000+ satisfied users</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity" id="recent-activity">
+            <div class="user-avatar">MP</div>
+            <div class="activity-info">
+                <h4>Morgan P. <span class="location-tag">Oregon</span></h4>
+                <p>Just claimed a $40 SHEIN gift card</p>
+                <p style="color: #999; font-size: 11px;">⏰ 15 minutes ago</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our SHEIN Gift Cards?</h2>
+            <p class="section-subtitle">Get access to the latest fashion trends with our exclusive reward system</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon pink">📧</div>
+                    <h3>Latest Fashion</h3>
+                    <p>Access to thousands of trendy items, from streetwear to formal wear</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon yellow">⭐</div>
+                    <h3>Trusted Platform</h3>
+                    <p>Verified reward system with thousands of successful redemptions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon black">⏰</div>
+                    <h3>Quick & Easy</h3>
+                    <p>Simple tasks that take just minutes to complete</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Section -->
+    <section class="how-to-get">
+        <div class="container">
+            <h2 class="section-title">How to Get Your SHEIN Gift Card</h2>
+            <p class="section-subtitle">Simple steps to unlock your fashion rewards</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number pink">1</div>
+                    <h3>Click to Start</h3>
+                    <p>Click the button below to access our reward platform</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number yellow">2</div>
+                    <h3>Complete Tasks</h3>
+                    <p>Finish simple tasks to earn your reward points</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number black">3</div>
+                    <h3>Get Your Card</h3>
+                    <p>Receive your SHEIN gift card and start shopping</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Wardrobe?</h2>
+            <p>Join thousands of fashion lovers who have already claimed their SHEIN gift cards</p>
+            <button class="cta-button" onclick="claimGiftCard()">
+                🎁 Get Your SHEIN Gift Card
+            </button>
+            <div class="user-count">
+                <div class="user-avatars">
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                </div>
+                <span>10,000+ users earned their gift cards</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"I couldn't believe how easy it was! Got my gift card in just a few minutes and bought the cutest dress."</blockquote>
+                    <div class="testimonial-author">- Sarah M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"Perfect for updating my wardrobe without spending my own money. The tasks were super simple!"</blockquote>
+                    <div class="testimonial-author">- Jessica L.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"This is legit! I've used multiple gift cards from here and always received them quickly."</blockquote>
+                    <div class="testimonial-author">- Emily R.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom User Activity -->
+    <div class="bottom-activity" id="bottom-activity" style="display: none;">
+        <div class="user-avatar">TW</div>
+        <div class="activity-info">
+            <h4>Taylor W. <span class="location-tag">Nevada</span></h4>
+            <p>Just claimed a $60 SHEIN gift card</p>
+            <p style="color: #999; font-size: 11px;">⏰ 13 minutes ago</p>
+        </div>
+    </div>
+
+    <script>
+        // Live counter updates
+        function updateCounters() {
+            const onlineCount = document.getElementById('online-count');
+            const claimedCount = document.getElementById('claimed-count');
+            const totalRedeemed = document.getElementById('total-redeemed');
+            
+            // Simulate live updates
+            setInterval(() => {
+                const currentOnline = parseInt(onlineCount.textContent);
+                const variation = Math.floor(Math.random() * 10) - 5;
+                onlineCount.textContent = Math.max(850, currentOnline + variation);
+            }, 5000);
+
+            setInterval(() => {
+                const currentClaimed = parseInt(claimedCount.textContent.replace(',', ''));
+                claimedCount.textContent = (currentClaimed + 1).toLocaleString();
+            }, 30000);
+
+            setInterval(() => {
+                const currentTotal = parseInt(totalRedeemed.textContent.replace(',', ''));
+                totalRedeemed.textContent = (currentTotal + 1).toLocaleString();
+            }, 45000);
+        }
+
+        // User activity rotation
+        const activities = [
+            { name: "Morgan P.", location: "Oregon", amount: "$40", time: "15 minutes ago", initials: "MP" },
+            { name: "Taylor W.", location: "Nevada", amount: "$60", time: "13 minutes ago", initials: "TW" },
+            { name: "Alex K.", location: "Texas", amount: "$25", time: "8 minutes ago", initials: "AK" },
+            { name: "Jamie L.", location: "Florida", amount: "$45", time: "22 minutes ago", initials: "JL" },
+            { name: "Casey R.", location: "California", amount: "$30", time: "6 minutes ago", initials: "CR" }
+        ];
+
+        let currentActivityIndex = 0;
+
+        function updateActivity() {
+            const activity = activities[currentActivityIndex];
+            const recentActivity = document.getElementById('recent-activity');
+            const bottomActivity = document.getElementById('bottom-activity');
+            
+            const activityHTML = `
+                <div class="user-avatar">${activity.initials}</div>
+                <div class="activity-info">
+                    <h4>${activity.name} <span class="location-tag">${activity.location}</span></h4>
+                    <p>Just claimed a ${activity.amount} SHEIN gift card</p>
+                    <p style="color: #999; font-size: 11px;">⏰ ${activity.time}</p>
+                </div>
+            `;
+            
+            if (Math.random() > 0.5) {
+                recentActivity.innerHTML = activityHTML;
+                bottomActivity.style.display = 'none';
+            } else {
+                bottomActivity.innerHTML = activityHTML;
+                bottomActivity.style.display = 'flex';
+                recentActivity.style.display = 'none';
+            }
+            
+            currentActivityIndex = (currentActivityIndex + 1) % activities.length;
+        }
+
+        // Claim gift card function
+        function claimGiftCard() {
+            alert('🎉 Redirecting to claim your SHEIN gift card! Complete the simple tasks to get your reward.');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCounters();
+            updateActivity();
+            setInterval(updateActivity, 10000); // Update every 10 seconds
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
