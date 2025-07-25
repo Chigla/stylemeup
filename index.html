@@ -472,15 +472,15 @@
         </div>
         <div class="activity-item">
             <span>👥 Online Now</span>
-            <span class="activity-count" id="online-count">855</span>
+            <span class="activity-count" id="online-count">152</span>
         </div>
         <div class="activity-item">
             <span>⚡ Claimed Today</span>
-            <span class="activity-count yellow" id="claimed-count">1,318</span>
+            <span class="activity-count yellow" id="claimed-count">1,363</span>
         </div>
         <div class="activity-item">
             <span>🎁 Total Redeemed</span>
-            <span style="font-weight: 600;" id="total-redeemed">89,851</span>
+            <span style="font-weight: 600;" id="total-redeemed">56,127</span>
         </div>
     </div>
 
@@ -627,13 +627,15 @@
             // Simulate live updates
             setInterval(() => {
                 const currentOnline = parseInt(onlineCount.textContent);
-                const variation = Math.floor(Math.random() * 10) - 5;
-                onlineCount.textContent = Math.max(850, currentOnline + variation);
+                const variation = Math.floor(Math.random() * 6) - 3;
+const newCount = Math.max(145, Math.min(155, currentOnline + variation));
+onlineCount.textContent = newCount;
             }, 5000);
 
             setInterval(() => {
                 const currentClaimed = parseInt(claimedCount.textContent.replace(',', ''));
-                claimedCount.textContent = (currentClaimed + 1).toLocaleString();
+                const newClaimed = Math.min(1400, currentClaimed + 1);
+claimedCount.textContent = newClaimed.toLocaleString();
             }, 30000);
 
             setInterval(() => {
