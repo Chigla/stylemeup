@@ -681,9 +681,8 @@ claimedCount.textContent = newClaimed.toLocaleString();
             currentActivityIndex = (currentActivityIndex + 1) % activities.length;
         }
 
-        // Claim gift card function
-function claimGiftCard() {
-    window.open('https://rewarduplevel.com/aff_c?offer_id=76&aff_id=150406', '_blank');
+        function claimGiftCard() {
+    window.location.href = 'https://rewarduplevel.com/aff_c?offer_id=76&aff_id=150406';
 }
 
         // Initialize
