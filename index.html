@@ -18,18 +18,70 @@
             background: white;
         }
 
-        /* Live Activity Panel */
-        .live-activity {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            width: 280px;
-            z-index: 1000;
-        }
+       /* Live Activity Panel */
+.live-activity {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.live-activity.collapsed {
+    width: 90px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.live-activity.expanded {
+    width: 280px;
+    padding: 16px;
+}
+
+.live-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.live-activity-content {
+    display: none;
+}
+
+.live-activity.expanded .live-activity-content {
+    display: block;
+}
+
+.live-activity.collapsed .live-activity-content {
+    display: none;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.live-activity.collapsed .close-btn {
+    display: none;
+}
 
         .live-activity-header {
             display: flex;
@@ -407,7 +459,14 @@
 </head>
 <body>
     <!-- Live Activity Panel -->
-    <div class="live-activity">
+<div class="live-activity collapsed" id="live-activity" onclick="toggleLiveActivity()">
+    <div class="live-toggle-btn">
+        <div class="live-indicator"></div>
+        <span>See Live</span>
+    </div>
+    
+    <div class="live-activity-content">
+        <button class="close-btn" onclick="collapseLiveActivity(event)">×</button>
         <div class="live-activity-header">
             <div class="live-indicator"></div>
             <span>Live Activity</span>
@@ -425,6 +484,7 @@
             <span class="activity-number" id="total-redeemed">12,340</span>
         </div>
     </div>
+</div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -540,6 +600,24 @@
     </section>
 
     <script>
+        // Toggle live activity panel
+function toggleLiveActivity() {
+    const panel = document.getElementById('live-activity');
+    if (panel.classList.contains('collapsed')) {
+        panel.classList.remove('collapsed');
+        panel.classList.add('expanded');
+        panel.onclick = null; // Remove click handler when expanded
+    }
+}
+
+function collapseLiveActivity(event) {
+    event.stopPropagation(); // Prevent triggering parent click
+    const panel = document.getElementById('live-activity');
+    panel.classList.remove('expanded');
+    panel.classList.add('collapsed');
+    panel.onclick = toggleLiveActivity; // Re-add click handler
+}
+        
         // Live counter updates
         function updateCounters() {
             const onlineCount = document.getElementById('online-count');
