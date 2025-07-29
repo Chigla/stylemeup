@@ -417,20 +417,6 @@
             color: #1f2937;
         }
 
-        /* User Activity at bottom */
-        .bottom-activity {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: white;
-            padding: 16px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1000;
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -607,15 +593,7 @@
         </div>
     </section>
 
-    <!-- Bottom User Activity -->
-    <div class="bottom-activity" id="bottom-activity" style="display: none;">
-        <div class="user-avatar">TW</div>
-        <div class="activity-info">
-            <h4>Taylor W. <span class="location-tag">Nevada</span></h4>
-            <p>Just claimed a $60 SHEIN gift card</p>
-            <p style="color: #999; font-size: 11px;">⏰ 13 minutes ago</p>
-        </div>
-    </div>
+   
 
     <script>
         // Live counter updates
@@ -655,31 +633,6 @@ claimedCount.textContent = newClaimed.toLocaleString();
 
         let currentActivityIndex = 0;
 
-        function updateActivity() {
-            const activity = activities[currentActivityIndex];
-            const recentActivity = document.getElementById('recent-activity');
-            const bottomActivity = document.getElementById('bottom-activity');
-            
-            const activityHTML = `
-                <div class="user-avatar">${activity.initials}</div>
-                <div class="activity-info">
-                    <h4>${activity.name} <span class="location-tag">${activity.location}</span></h4>
-                    <p>Just claimed a ${activity.amount} SHEIN gift card</p>
-                    <p style="color: #999; font-size: 11px;">⏰ ${activity.time}</p>
-                </div>
-            `;
-            
-            if (Math.random() > 0.5) {
-                recentActivity.innerHTML = activityHTML;
-                bottomActivity.style.display = 'none';
-            } else {
-                bottomActivity.innerHTML = activityHTML;
-                bottomActivity.style.display = 'flex';
-                recentActivity.style.display = 'none';
-            }
-            
-            currentActivityIndex = (currentActivityIndex + 1) % activities.length;
-        }
 
         function claimGiftCard() {
     window.location.href = 'https://rewarduplevel.com/aff_c?offer_id=76&aff_id=150406';
