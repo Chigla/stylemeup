@@ -463,15 +463,15 @@
         </div>
         <div class="activity-item">
             <span>👥 Online Now</span>
-            <span class="activity-count" id="online-count">843</span>
+            <span class="activity-count" id="online-count">78</span>
         </div>
         <div class="activity-item">
             <span>⚡ Claimed Today</span>
-            <span class="activity-count yellow" id="claimed-count">1,243</span>
+            <span class="activity-count yellow" id="claimed-count">147</span>
         </div>
         <div class="activity-item">
             <span>🎁 Total Redeemed</span>
-            <span class="activity-number" id="total-redeemed">89,773</span>
+            <span class="activity-number" id="total-redeemed">12,563</span>
         </div>
     </div>
 
@@ -496,16 +496,7 @@
             </div>
         </div>
 
-        <!-- Recent Activity -->
-        <div class="recent-activity" id="recent-activity">
-            <div class="user-avatar">MP</div>
-            <div class="activity-info">
-                <h4>Morgan P. <span class="location-tag">Oregon</span></h4>
-                <p>Just claimed a $500 Target gift card</p>
-                <p style="color: #999;">⏰ 15 minutes ago</p>
-            </div>
-        </div>
-    </section>
+        
 
     <!-- Why Choose Section -->
     <section class="why-choose">
@@ -568,14 +559,7 @@
                 🎁 Get Your Target Gift Card
             </button>
             <div class="user-count">
-                <div class="user-avatars">
-                    <div class="avatar"></div>
-                    <div class="avatar"></div>
-                    <div class="avatar"></div>
-                    <div class="avatar"></div>
-                    <div class="avatar"></div>
-                </div>
-                <span>10,000+ users earned their gift cards</span>
+                <span>12,000+ users earned their gift cards</span>
             </div>
         </div>
     </section>
@@ -607,75 +591,45 @@
 
     <script>
         // Live counter updates
-        function updateCounters() {
-            const onlineCount = document.getElementById('online-count');
-            const claimedCount = document.getElementById('claimed-count');
-            const totalRedeemed = document.getElementById('total-redeemed');
-            
-            // Simulate live updates for online count (840-850 range)
-            setInterval(() => {
-                const currentOnline = parseInt(onlineCount.textContent);
-                const variation = Math.floor(Math.random() * 6) - 3; // -3 to +3
-                const newCount = Math.max(840, Math.min(850, currentOnline + variation));
-                onlineCount.textContent = newCount;
-            }, 5000);
+function updateCounters() {
+    const onlineCount = document.getElementById('online-count');
+    const claimedCount = document.getElementById('claimed-count');
+    const totalRedeemed = document.getElementById('total-redeemed');
+    
+    // Simulate live updates for online count (75-85 range)
+    setInterval(() => {
+        const currentOnline = parseInt(onlineCount.textContent);
+        const variation = Math.floor(Math.random() * 6) - 3; // -3 to +3
+        const newCount = Math.max(75, Math.min(85, currentOnline + variation));
+        onlineCount.textContent = newCount;
+    }, 5000);
 
-            // Simulate claimed today updates (slow increment, cap at 1300)
-            setInterval(() => {
-                const currentClaimed = parseInt(claimedCount.textContent.replace(',', ''));
-                if (currentClaimed < 1300) {
-                    const newClaimed = currentClaimed + 1;
-                    claimedCount.textContent = newClaimed.toLocaleString();
-                }
-            }, 30000);
-
-            // Simulate total redeemed updates (very slow increment)
-            setInterval(() => {
-                const currentTotal = parseInt(totalRedeemed.textContent.replace(',', ''));
-                const newTotal = currentTotal + 1;
-                totalRedeemed.textContent = newTotal.toLocaleString();
-            }, 45000);
+    // Simulate claimed today updates (slow increment, cap at 180)
+    setInterval(() => {
+        const currentClaimed = parseInt(claimedCount.textContent.replace(',', ''));
+        if (currentClaimed < 180) {
+            const newClaimed = currentClaimed + 1;
+            claimedCount.textContent = newClaimed.toLocaleString();
         }
+    }, 45000); // Slower increment for realistic growth
 
-        // User activity rotation
-        const activities = [
-            { name: "Morgan P.", location: "Oregon", amount: "$500", time: "15 minutes ago", initials: "MP" },
-            { name: "Taylor W.", location: "Nevada", amount: "$500", time: "13 minutes ago", initials: "TW" },
-            { name: "Alex K.", location: "Texas", amount: "$250", time: "8 minutes ago", initials: "AK" },
-            { name: "Jamie L.", location: "Florida", amount: "$750", time: "22 minutes ago", initials: "JL" },
-            { name: "Casey R.", location: "California", amount: "$500", time: "6 minutes ago", initials: "CR" }
-        ];
+    // Simulate total redeemed updates (very slow increment)
+    setInterval(() => {
+        const currentTotal = parseInt(totalRedeemed.textContent.replace(',', ''));
+        const newTotal = currentTotal + 1;
+        totalRedeemed.textContent = newTotal.toLocaleString();
+    }, 60000); // Even slower for total count
+}
 
-        let currentActivityIndex = 0;
+// Claim gift card function
+function claimGiftCard() {
+    window.location.href = 'https://rewarduplevel.com/aff_c?offer_id=76&aff_id=150406';
+}
 
-        function updateActivity() {
-            const activity = activities[currentActivityIndex];
-            const recentActivity = document.getElementById('recent-activity');
-            
-            const activityHTML = `
-                <div class="user-avatar">${activity.initials}</div>
-                <div class="activity-info">
-                    <h4>${activity.name} <span class="location-tag">${activity.location}</span></h4>
-                    <p>Just claimed a ${activity.amount} Target gift card</p>
-                    <p style="color: #999;">⏰ ${activity.time}</p>
-                </div>
-            `;
-            
-            recentActivity.innerHTML = activityHTML;
-            currentActivityIndex = (currentActivityIndex + 1) % activities.length;
-        }
-
-        // Claim gift card function
-        function claimGiftCard() {
-            window.location.href = 'https://rewarduplevel.com/aff_c?offer_id=76&aff_id=150406';
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCounters();
-            updateActivity();
-            setInterval(updateActivity, 10000); // Update every 10 seconds
-        });
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    updateCounters();
+});
     </script>
 </body>
 </html>
